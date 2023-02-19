@@ -56,8 +56,10 @@ const httpRequestListener = function (request, response) {
           email: user.email,
           password: user.password,
         });
+
+        response.writeHead(200, { "Content-Type": "application/json" });
+        response.end(JSON.stringify({ users: users }));
       });
-      response.end(JSON.stringify({ message: "userCreated" }));
     }
   }
 };
